@@ -1,0 +1,358 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clothing Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo-nav">
+            <h1 class="store-name">Clothing Store</h1>
+            <nav>
+                <ul class="navbar">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="product-detail.html">Products-Deatail</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                </ul>
+            </nav>
+            <span class="menu-icon">&#9776;</span> 
+        </div>
+    </header>
+
+    <main class="main-content">
+        <h2>Welcome to Our Clothing Store!</h2>
+        <p>Discover the latest trends in fashion at our online store. Shop now for the best deals on clothing, accessories, and more.</p>
+        >
+        <img src="images/store.png" alt="Clothing Store" class="store-image">
+        <a href="products.html" class="btn">Shop Now</a>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Clothing Store. All rights reserved.</p>
+    </footer>
+
+    <script>
+        
+        const menuIcon = document.querySelector('.menu-icon');
+        const navbar = document.querySelector('.navbar');
+
+        menuIcon.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
+ -->
+
+
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Clothing Store</title>
+     <link rel="stylesheet" href="styles.css">
+     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+     <style>
+         /* Reset default browser styling */
+         * {
+             margin: 0;
+             padding: 0;
+             box-sizing: border-box;
+         }
+ 
+         body {
+             font-family: 'Roboto', sans-serif;
+             min-height: 100vh;
+             display: flex;
+             flex-direction: column;
+         }
+ 
+         /* Header Styling */
+         header {
+             background-color: #0d1b2a; /* Navy blue header */
+             padding: 20px;
+             position: sticky;
+             top: 0;
+             z-index: 100;
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+         }
+ 
+         .store-name {
+             font-size: 28px;
+             color: #FFD700; /* Yellow */
+             transition: color 0.3s ease;
+         }
+ 
+         .store-name:hover {
+             color: #ffffff; /* Change color on hover */
+         }
+ 
+         /* Navbar styling */
+         .navbar {
+             list-style-type: none;
+             display: flex;
+             gap: 20px;
+         }
+ 
+         .navbar li a {
+             text-decoration: none;
+             color: #FFD700; /* Yellow links */
+             font-size: 18px;
+             padding: 10px 15px;
+             border-radius: 5px;
+             transition: background-color 0.3s ease, color 0.3s ease;
+         }
+ 
+         .navbar li a:hover {
+             background-color: #FFD700; /* Yellow background on hover */
+             color: #000; /* Black text on hover */
+             transform: scale(1.05); /* Slight zoom on hover */
+         }
+ 
+         /* Sidebar Styling */
+         .sidebar {
+             display: none; /* Hidden by default */
+             position: fixed; /* Fixed position */
+             top: 0;
+             left: 0;
+             width: 200px; /* Reduced width of the sidebar */
+             height: 100%; /* Full height */
+             background-color: #0d1b2a; /* Navy blue */
+             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+             padding-top: 60px; /* Space for header */
+             z-index: 100; /* Above other elements */
+             transition: transform 0.3s ease; /* Transition for sliding */
+             transform: translateX(-100%); /* Initially off-screen */
+         }
+ 
+         .sidebar.open {
+             display: block; /* Show when open */
+             transform: translateX(0); /* Slide in */
+         }
+ 
+         .sidebar ul {
+             list-style: none;
+             padding: 0;
+         }
+ 
+         .sidebar ul li {
+             padding: 10px 20px; /* Reduced padding for sidebar items */
+         }
+ 
+         .sidebar ul li a {
+             color: #FFD700; /* Yellow links */
+             text-decoration: none; /* No underline */
+             font-size: 16px; /* Font size for links */
+             display: block; /* Block display for easier click */
+             transition: background-color 0.3s ease; /* Transition for hover effect */
+         }
+ 
+         .sidebar ul li a:hover {
+             background-color: rgba(255, 215, 0, 0.5); /* Semi-transparent hover effect */
+         }
+ 
+         /* Main content styling */
+         .main-content {
+             position: relative;
+             height: 100vh; /* Full viewport height */
+             display: flex;
+             flex-direction: column; /* Column layout */
+             justify-content: center;
+             align-items: center;
+             text-align: center;
+             overflow: hidden; /* Prevent overflow */
+             padding: 20px; /* Added padding for small screens */
+         }
+ 
+         /* Background Image */
+         .bg-image {
+             position: absolute;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             background-image: url('store.png'); /* Full-screen image */
+             background-size: cover; /* Cover the entire screen */
+             background-position: center; /* Center the image */
+             filter: brightness(0.7); /* Darken the image for contrast */
+             z-index: 1; /* Behind the text */
+             transition: filter 0.5s ease; /* Transition for brightness */
+         }
+ 
+         .bg-image:hover {
+             filter: brightness(0.9); /* Slightly lighten on hover */
+         }
+ 
+         /* Overlay for readability */
+         .overlay {
+             position: absolute;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+             z-index: 2; /* Above the image */
+         }
+ 
+         h2 {
+             font-size: 2.5rem; /* Responsive font size */
+             color: #FFD700; /* Yellow heading */
+             margin-bottom: 10px;
+             text-transform: uppercase;
+             z-index: 3; /* Above the overlay */
+             animation: slide-in 0.5s ease-out; /* Slide-in animation */
+         }
+ 
+         p {
+             font-size: 1.5rem; /* Responsive paragraph size */
+             margin-bottom: 20px;
+             color: #f0f0f0;
+             z-index: 3; /* Above the overlay */
+             animation: fade-in 1s ease-in; /* Fade-in animation */
+         }
+ 
+         /* Button styling */
+         .btn {
+             padding: 12px 24px;
+             background-color: #FFD700; /* Yellow button */
+             color: #000;
+             text-decoration: none;
+             font-size: 1.2rem; /* Responsive button text */
+             border-radius: 5px;
+             transition: background-color 0.3s ease, transform 0.3s ease; /* Button transitions */
+             z-index: 3; /* Above the overlay */
+             margin-top: 10px; /* Space above button */
+         }
+ 
+         .btn:hover {
+             background-color: #fff; /* White button on hover */
+             color: #000;
+             transform: scale(1.1); /* Slight zoom on hover */
+         }
+ 
+         /* Footer styling */
+         footer {
+             text-align: center;
+             padding: 15px;
+             background-color: #0d1b2a; /* Navy blue */
+             color: #FFD700; /* Yellow */
+             position: relative;
+             width: 100%;
+             bottom: 0;
+             transition: background-color 0.3s ease; /* Transition for footer background */
+         }
+ 
+         footer:hover {
+             background-color: #1c2d4b; /* Darker navy on hover */
+         }
+ 
+         /* Animations */
+         @keyframes fade-in {
+             from {
+                 opacity: 0;
+                 transform: translateY(30px);
+             }
+             to {
+                 opacity: 1;
+                 transform: translateY(0);
+             }
+         }
+ 
+         @keyframes slide-in {
+             from {
+                 opacity: 0;
+                 transform: translateX(-50px);
+             }
+             to {
+                 opacity: 1;
+                 transform: translateX(0);
+             }
+         }
+ 
+         /* Responsive Design */
+         @media (max-width: 768px) {
+             h2 {
+                 font-size: 2rem; /* Smaller heading for mobile */
+             }
+ 
+             p {
+                 font-size: 1.2rem; /* Smaller text for mobile */
+             }
+ 
+             .btn {
+                 font-size: 1rem; /* Smaller button text for mobile */
+                 padding: 10px 20px; /* Adjusted padding */
+             }
+ 
+             .sidebar {
+                 width: 180px; /* Further reduced sidebar width */
+             }
+ 
+             .sidebar ul li {
+                 padding: 8px 15px; /* Reduced padding for items */
+             }
+ 
+             .sidebar ul li a {
+                 font-size: 14px; /* Smaller font size for mobile */
+             }
+         }
+ 
+         @media (max-width: 480px) {
+             h2 {
+                 font-size: 1.5rem; /* Further reduction for smaller devices */
+             }
+ 
+             p {
+                 font-size: 1rem; /* Further reduction for smaller devices */
+             }
+         }
+     </style>
+ </head>
+ <body>
+     <header>
+         <div class="store-name">Clothing Store</div>
+         <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+     </header>
+ 
+     <nav class="sidebar" id="sidebar">
+         <ul>
+             <li><a href="index.html">Home</a></li>
+             <li><a href="products.html">Products</a></li>
+             <li><a href="product-detail.html">Product Detail</a></li>
+             <li><a href="about.html">About Us</a></li>
+             <li><a href="contact.html">Contact Us</a></li>
+             <li><a href="cart.html">Cart</a></li>
+         </ul>
+     </nav>
+ 
+     <div class="main-content">
+         <div class="bg-image"></div>
+         <div class="overlay"></div>
+         <h2>Welcome to Our Clothing Store</h2>
+         <p>Explore the latest trends and styles.</p>
+         <a href="products.html" class="btn">Shop Now</a>
+     </div>
+ 
+     <footer>
+         <p>&copy; 2024 Clothing Store. All rights reserved.</p>
+     </footer>
+ 
+     <script>
+         function toggleSidebar() {
+             const sidebar = document.getElementById('sidebar');
+             sidebar.classList.toggle('open');
+         }
+     </script>
+ </body>
+ </html>
+ 
+

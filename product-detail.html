@@ -1,0 +1,525 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Clothing Store</title>
+
+    <!-- <style>
+       
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000; 
+            color: #f0f0f0; 
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #0d1b2a; 
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 24px;
+            color: #FFD700; 
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #FFD700; 
+            padding: 10px 15px;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #FFD700;
+            color: #000; 
+        }
+
+        main {
+            flex-grow: 1;
+            padding: 40px 20px;
+            text-align: center;
+            display: flex;
+            flex-wrap: wrap; 
+            justify-content: center; 
+        }
+
+        h2 {
+            font-size: 36px;
+            color: #FFD700;
+            margin-bottom: 20px;
+            width: 100%; 
+        }
+
+        .product-detail {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #0d1b2a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(255, 215, 0, 0.4);
+            margin: 20px;
+            width: calc(100% - 40px); 
+            max-width: 300px; 
+            opacity: 0; 
+            transform: translateY(20px); 
+            animation: fadeInUp 0.5s forwards; 
+            animation-delay: 0.2s;
+        }
+
+        .product-detail img {
+            width: 100%; 
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .product-detail h3 {
+            font-size: 28px;
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+
+        .product-detail p {
+            font-size: 20px;
+            color: #f0f0f0;
+            margin-bottom: 15px;
+        }
+
+        .add-to-cart {
+            background-color: #FFD700; 
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease; 
+        }
+
+        .add-to-cart:hover {
+            background-color: #fff; 
+            color: #000;
+            transform: scale(1.05); 
+        }
+
+        footer {
+            background-color: #0d1b2a;
+            color: #FFD700;
+            text-align: center;
+            padding: 15px;
+            width: 100%;
+        }
+
+       
+        @keyframes fadeInUp {
+            to {
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+       
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 20px; 
+            }
+
+            nav ul li a {
+                font-size: 16px; 
+            }
+
+            .product-detail {
+                width: calc(100% - 30px); 
+                animation-delay: 0.1s; 
+            }
+
+            h2 {
+                font-size: 30px;
+            }
+
+            .product-detail h3 {
+                font-size: 24px; 
+            }
+
+            .product-detail p {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column; 
+                width: 100%; 
+            }
+
+            nav ul li a {
+                padding: 8px; 
+                font-size: 14px; 
+            }
+
+            .product-detail {
+                margin: 10px 0; 
+            }
+
+            h2 {
+                font-size: 24px; 
+            }
+
+            .product-detail h3 {
+                font-size: 20px; 
+            }
+
+            .product-detail p {
+                font-size: 16px;
+            }
+        }
+    </style> -->
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000; /* Black background */
+            color: #f0f0f0; /* Light grey text */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+    
+        header {
+            background-color: #0d1b2a; /* Navy blue */
+            padding: 10px 20px; /* Adjusted padding */
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    
+        header h1 {
+            font-size: 24px;
+            color: #FFD700; /* Yellow for heading */
+        }
+    
+        nav {
+            flex-grow: 1; /* Allow nav to take space */
+            display: flex; /* Flex display for horizontal alignment */
+            justify-content: flex-end; /* Align nav to the right */
+        }
+    
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+    
+        nav ul li a {
+            text-decoration: none;
+            color: #FFD700; /* Yellow for links */
+            padding: 10px 15px;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+    
+        nav ul li a:hover {
+            background-color: #FFD700;
+            color: #000; /* Black on hover */
+        }
+    
+        main {
+            flex-grow: 1;
+            padding: 40px 20px;
+            text-align: center;
+            display: flex;
+            flex-wrap: wrap; /* Allow items to wrap */
+            justify-content: center; /* Center items */
+        }
+    
+        h2 {
+            font-size: 36px;
+            color: #FFD700;
+            margin-bottom: 20px;
+            width: 100%; /* Full width */
+        }
+    
+        .product-detail {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #0d1b2a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(255, 215, 0, 0.4);
+            margin: 20px;
+            width: calc(100% - 40px); /* Responsive width */
+            max-width: 300px; /* Max width for each product detail */
+            opacity: 0; /* Start invisible for animation */
+            transform: translateY(20px); /* Start position for animation */
+            animation: fadeInUp 0.5s forwards; /* Add animation */
+            animation-delay: 0.2s; /* Delay to stagger animations */
+        }
+    
+        .product-detail img {
+            width: 100%; /* Make image responsive */
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+    
+        .product-detail h3 {
+            font-size: 28px;
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+    
+        .product-detail p {
+            font-size: 20px;
+            color: #f0f0f0;
+            margin-bottom: 15px;
+        }
+    
+        .add-to-cart {
+            background-color: #FFD700; /* Yellow button */
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Add transform transition */
+        }
+    
+        .add-to-cart:hover {
+            background-color: #fff; /* White on hover */
+            color: #000;
+            transform: scale(1.05); /* Scale up button */
+        }
+    
+        footer {
+            background-color: #0d1b2a;
+            color: #FFD700;
+            text-align: center;
+            padding: 15px;
+            width: 100%;
+        }
+    
+        /* Animation keyframes */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1; /* Fade in */
+                transform: translateY(0); /* Move to original position */
+            }
+        }
+    
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 20px; /* Smaller heading */
+            }
+    
+            nav ul li a {
+                font-size: 16px; /* Smaller links */
+            }
+    
+            .product-detail {
+                width: calc(100% - 30px); /* Full width on smaller screens */
+                animation-delay: 0.1s; /* Adjust delay */
+            }
+    
+            h2 {
+                font-size: 30px; /* Smaller heading */
+            }
+    
+            .product-detail h3 {
+                font-size: 24px; /* Smaller product title */
+            }
+    
+            .product-detail p {
+                font-size: 18px; /* Smaller description */
+            }
+        }
+    
+        @media (max-width: 480px) {
+            header {
+                flex-direction: column; /* Stack header elements */
+                align-items: flex-start; /* Align to start */
+            }
+    
+            nav ul {
+                flex-direction: column; /* Stack nav links */
+                width: 100%; /* Full width */
+            }
+    
+            nav ul li a {
+                padding: 8px; /* Adjust padding for mobile */
+                font-size: 14px; /* Smaller links */
+            }
+    
+            .product-detail {
+                margin: 10px 0; /* Adjust margins */
+            }
+    
+            h2 {
+                font-size: 24px; /* Even smaller heading */
+            }
+    
+            .product-detail h3 {
+                font-size: 20px; /* Even smaller product title */
+            }
+    
+            .product-detail p {
+                font-size: 16px; /* Even smaller description */
+            }
+        }
+    </style>
+    
+
+
+</head>
+<body>
+    <header>
+        <h1>Clothing Store</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Product Details</h2>
+
+        
+         <div class="product-detail">
+            <img src="tshirt.png" alt="Stylish T-Shirt">
+            <h3>Stylish T-Shirt</h3>
+            <p>Description: This stylish t-shirt is perfect for casual wear. Made from high-quality fabric, it ensures comfort and durability, making it a must-have for your wardrobe. Its unique design makes it suitable for both daytime and nighttime outings.</p>
+            <p>Price: $25.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div> 
+
+       
+        <div class="product-detail">
+            <img src="jeans.webp" alt="Classic Jeans">
+            <h3>Classic Jeans</h3>
+            <p>Description: These classic jeans are designed for comfort and style, perfect for any casual occasion. With a timeless cut and robust material, they can easily transition from day to night, providing you with versatility and style.</p>
+            <p>Price: $40.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+       
+        <div class="product-detail">
+            <img src="images/jackets.png" alt="Casual Jacket">
+            <h3>Casual Jacket</h3>
+            <p>Description: A lightweight casual jacket ideal for layering. Perfect for chilly evenings, this jacket combines style and functionality, featuring pockets and a sleek design that ensures you look good while staying warm.</p>
+            <p>Price: $60.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        
+        <div class="product-detail">
+            <img src="elegant dress.png" alt="Elegant Dress">
+            <h3>Elegant Dress</h3>
+            <p>Description: This elegant dress is perfect for special occasions. Crafted from luxurious fabric, its flattering silhouette will make you the center of attention at any event, ensuring you feel confident and beautiful.</p>
+            <p>Price: $80.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        
+        <div class="product-detail">
+            <img src="shoes.png" alt="Trendy Sneakers">
+            <h3>Trendy Sneakers</h3>
+            <p>Description: Step up your shoe game with these trendy sneakers. Designed for both comfort and style, they are perfect for everyday wear, workouts, or casual outings. Their unique design adds a fresh look to your outfit.</p>
+            <p>Price: $65.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+       
+        <div class="product-detail">
+            <img src="hoodie.png" alt="Fashionable Sunglasses">
+            <h3>Cozy Hoodie</h3>
+            <p>Description: Protect your eyes in style with these fashionable sunglasses. Featuring a modern design, they are perfect for sunny days and add a touch of elegance to any outfit.</p>
+            <p>Price: $45.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        
+        <div class="product-detail">
+            <img src="bag.png" alt="Comfortable Sweatpants">
+            <h3>Trendy Bag</h3>
+            <p>Description: Relax in style with these comfortable sweatpants. Perfect for lounging or workouts, they offer a great fit and flexibility, ensuring you stay comfortable while looking effortlessly stylish.</p>
+            <p>Price: $35.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        
+        <div class="product-detail">
+            <img src="sweater.png" alt="Warm Sweater">
+            <h3>Warm Sweater</h3>
+            <p>Description: Keep warm and stylish with this trendy hoodie. Made from soft fabric, it features a comfortable fit and a modern design that can be paired with any casual outfit, making it a must-have for your collection.</p>
+            <p>Price: $50.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        
+        <div class="product-detail">
+            <img src="fashion.png" alt="Fashion Accessories">
+            <h3>Fashion Accessories</h3>
+            <p>Description: This classic polo shirt is a staple for any wardrobe. Made from breathable fabric, it provides both comfort and style, making it suitable for casual outings or semi-formal occasions.</p>
+            <p>Price: $30.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Clothing Store. All Rights Reserved.</p>
+    </footer>
+</body>
+</html> 
+
+
+
+
+
+
+
